@@ -1,0 +1,25 @@
+{
+  "name": "simplechat",
+  "version": "1.0.0",
+  "description": "simple chat application using websockets",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kidCaulfield/SimpleChat.git"
+  },
+  "keywords": [
+    "chatroom"
+  ],
+  "author": "Wes Coderre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kidCaulfield/SimpleChat/issues"
+  },
+  "homepage": "https://github.com/kidCaulfield/SimpleChat#readme",
+  "dependencies": {
+    "websocket": "^1.0.29"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "simple-chat",
+  "description": "a Sails application",
+  "main": "app.js",
+  "authors": [
+    "Wesley"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kidCaulfield/SimpleChat",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ]
+}

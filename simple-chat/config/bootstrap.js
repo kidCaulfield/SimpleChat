@@ -10,7 +10,7 @@
  */
 
 module.exports.bootstrap = async function() {
-
+  sails.config.appName = "Simple Chat";
   // Import dependencies
   var path = require('path');
 

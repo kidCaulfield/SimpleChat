@@ -14,13 +14,10 @@ module.exports = {
 
     try {
       let user = await User.findOne({ email: "johnnie86@gmail.com" });
-      console.log('user: ', user);
-      console.log('request.body.message: ', request.body.message);
       let msg = await ChatMessage.create({
         message: request.body.message,
         createdBy: user.id
       }).fetch();
-      console.log('msg: ', msg);
       if (!msg.id) {
         throw new Error("Message processing failed!");
       }

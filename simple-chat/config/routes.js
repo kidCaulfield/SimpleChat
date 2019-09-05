@@ -20,8 +20,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
-  '/profile': { view: 'pages/profile' },
-  '/chat': { view: 'pages/chatroom' }
+  '/profile': { controller: 'UserController', action: 'render' },
+  '/chat': { view: 'pages/chatroom' },
+  '/postMessage': { controller: 'ChatMessageController', action: 'postMessage' }
 
 
   /***************************************************************************

@@ -22,6 +22,7 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   '/profile': { controller: 'UserController', action: 'render' },
   '/update/:id': { controller: 'UserController', action: 'update' },
+  '/refresh-users': { controller: 'UserController', action: 'refresh' },
   '/on-connect': { controller: 'ChatMessageController', action: 'onConnect' },
   '/chat': { controller: 'ChatMessageController', action: 'render' },
   '/postMessage': { controller: 'ChatMessageController', action: 'postMessage' },

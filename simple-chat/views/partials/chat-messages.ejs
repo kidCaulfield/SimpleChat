@@ -32,23 +32,9 @@
 
     // Listen for new chat messages
     io.socket.on("channel", function(body) {
-      console.log('body 1: ', body);
       renderChatMessages(body.msg);
     });
   }
-
-  // function sendMessage() {
-  //   // Load existing chat messages
-  //   io.socket.get("/chatmessage", function(messages, response) {
-  //     renderChatMessages(messages.slice(-1));
-  //   });
-
-  //   // Listen for new chat messages
-  //   io.socket.on("channel", function(body) {
-  //     console.log('body: ', body);
-  //     renderChatMessages(body.data);
-  //   });
-  // }
 
   function renderChatMessages(data) {
     const chatContent = $("#chat-content");

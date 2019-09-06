@@ -23,13 +23,14 @@
 
     // Listen for new & updated users
     io.socket.on("user", function(body) {
-      io.socket.get("/user", function(users, response) {
+      io.socket.get("/refresh-users", function(users, response) {
         renderChatUsers(users);
       });
     });
   }
 
   function renderChatUsers(data) {
+    console.log('data: ', data);
     const template = $.templates("#usersTemplate");
     let htmlOutput = template.render(data);
     $("#users-content").html(htmlOutput);

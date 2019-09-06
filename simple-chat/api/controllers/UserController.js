@@ -12,9 +12,33 @@ module.exports = {
       if (!data) {
         return response.notFound("The user was NOT found!");
       }
+
       response.view("pages/profile", { data });
     } catch (err) {
       response.serverError(err);
+    }
+  },
+  find: async (req, res) => {
+    try {
+      let users = await User.find({
+        where: { id: {'>': 0} } 
+      });
+      
+      sails.sockets.broadcast("chat-channel", "user", { users });
+      res.json(users);
+    } catch (error) {
+      res.serverError(error);
+    }
+  },
+  refresh: async (req, res) => {
+    try {
+      let users = await User.find({
+        where: { id: {'>': 0} } 
+      });
+      
+      res.json(users);
+    } catch (error) {
+      res.serverError(error);
     }
   },
   update: async (req, res) => {

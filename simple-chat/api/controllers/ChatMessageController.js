@@ -8,6 +8,7 @@
 module.exports = {
   onConnect: async (req, res) => {
     sails.sockets.join(req, "chat-channel");
+
     return res.ok();
   },
   postMessage: async (request, response) => {
@@ -26,7 +27,6 @@ module.exports = {
         throw new Error("Message processing failed!");
       }
       sails.sockets.broadcast("chat-channel", "channel", { msg });
-      return response.ok();
     } catch (err) {
       return response.serverError(err);
     }

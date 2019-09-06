@@ -28,6 +28,9 @@ module.exports = {
     }
 
     return response.ok();
+  },
+  render: (request, response) => {
+    return response.view('pages/chatroom');
   }
 };
 

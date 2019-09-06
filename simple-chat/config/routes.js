@@ -21,10 +21,10 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   '/profile': { controller: 'UserController', action: 'render' },
-  '/chat': { view: 'pages/chatroom' },
-  '/postMessage': { controller: 'ChatMessageController', action: 'postMessage' }
-
-
+  '/chat': { controller: 'ChatMessageController', action: 'render' },
+  '/postMessage': { controller: 'ChatMessageController', action: 'postMessage' },
+  '/auth/authenticate': { controller: 'AuthController', action: 'authenticate' }
+  
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

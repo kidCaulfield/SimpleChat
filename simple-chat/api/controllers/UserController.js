@@ -8,15 +8,33 @@
 module.exports = {
   render: async (request, response) => {
     try {
-      let data = await User.findOne({
-        email: "johnnie86@gmail.com"
-      });
+      let data = await User.findOne({ id: request.session.userId });
       if (!data) {
         return response.notFound("The user was NOT found!");
       }
       response.view("pages/profile", { data });
     } catch (err) {
       response.serverError(err);
+    }
+  },
+  update: async (req, res) => {
+    try {
+      let user = await User.findOne({ id: req.session.userId });
+      const { id } = user;
+      const { name, email, avatar, location, bio } = req.query;
+      let updated = await User.update(user)
+        .set({
+          id: id,
+          name: name,
+          email: email,
+          avatar: avatar,
+          location: location,
+          bio: bio
+        })
+        .fetch();
+      res.redirect("/profile");
+    } catch (error) {
+      res.serverError(error);
     }
   }
 };

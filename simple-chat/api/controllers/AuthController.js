@@ -33,7 +33,8 @@ module.exports = {
     const success = await AuthService.login(request, response);
   },
 
-  logout: (request, response) => {
+  logout: async (request, response) => {
     // Logout user
+    const leave = await AuthService.logout(request, response);
   }
 };

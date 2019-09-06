@@ -21,9 +21,11 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   '/profile': { controller: 'UserController', action: 'render' },
+  '/update/:id': { controller: 'UserController', action: 'update' },
   '/chat': { controller: 'ChatMessageController', action: 'render' },
   '/postMessage': { controller: 'ChatMessageController', action: 'postMessage' },
-  '/auth/authenticate': { controller: 'AuthController', action: 'authenticate' }
+  '/auth/authenticate': { controller: 'AuthController', action: 'authenticate' },
+  '/auth/logout': { controller: 'AuthController', action: 'logout' }
   
   /***************************************************************************
   *                                                                          *

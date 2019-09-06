@@ -21,6 +21,12 @@
 
 <script type="text/javascript">
   window.onload = function() {
+    io.socket.on("connect", function() {
+      console.log("connected");
+      io.socket.post("/on-connect", "", function(data, data2) {
+        console.log(data);
+      });
+    });
     loadUsers();
     loadMessages();
     activateChat();

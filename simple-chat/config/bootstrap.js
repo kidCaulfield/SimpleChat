@@ -13,39 +13,39 @@ module.exports.bootstrap = async function() {
   sails.config.appName = "Sails Chat App";
 
   // Generate Chat Messages
-  try {
-    let messageCount = ChatMessage.count();
-    if (messageCount > 0) {
-      return; // don't repeat messages
-    }
+  // try {
+  //   let messageCount = ChatMessage.count();
+  //   if (messageCount > 0) {
+  //     return; // don't repeat messages
+  //   }
 
-    let users = await User.find();
-    if (users.length >= 3) {
-      console.log("Generating messages...");
+  //   let users = await User.find();
+  //   if (users.length >= 3) {
+  //     console.log("Generating messages...");
 
-      let msg1 = await ChatMessage.create({
-        message: "Hey Everyone! Welcome to the community!",
-        createdBy: users[1].id
-      });
-      console.log("Created Chat Message: " + msg1);
+  //     let msg1 = await ChatMessage.create({
+  //       message: "Hey Everyone! Welcome to the community!",
+  //       createdBy: users[1].id
+  //     });
+  //     console.log("Created Chat Message: " + msg1);
 
-      let msg2 = await ChatMessage.create({
-        message: "How's it going?",
-        createdBy: users[2].id
-      });
-      console.log("Created Chat Message: " + msg2);
+  //     let msg2 = await ChatMessage.create({
+  //       message: "How's it going?",
+  //       createdBy: users[2].id
+  //     });
+  //     console.log("Created Chat Message: " + msg2);
 
-      let msg3 = await ChatMessage.create({
-        message: "Super excited!",
-        createdBy: users[0].id
-      });
-      console.log("Created Chat Message: " + msg3);
-    } else {
-      console.log("skipping message generation");
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  //     let msg3 = await ChatMessage.create({
+  //       message: "Super excited!",
+  //       createdBy: users[0].id
+  //     });
+  //     console.log("Created Chat Message: " + msg3);
+  //   } else {
+  //     console.log("skipping message generation");
+  //   }
+  // } catch (err) {
+  //   console.error(err);
+  // }
 
   // By convention, this is a good place to set up fake data during development.
   //

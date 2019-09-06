@@ -74,7 +74,6 @@ module.exports = {
       if (user) {
         // Login Passed
         request.session.userId = user.id;
-        console.log('request.session.authenticated: ', request.session.authenticated);
         request.session.authenticated = true;
         return response.redirect("/chat");
       } else {

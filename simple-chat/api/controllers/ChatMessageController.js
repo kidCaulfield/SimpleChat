@@ -6,6 +6,10 @@
  */
 
 module.exports = {
+  onConnect: async (req, res) => {
+    sails.sockets.join(req, "chat-channel");
+    return res.ok();
+  },
   postMessage: async (request, response) => {
     // Make sure this is a socket request (not traditional HTTP)
     if (!request.isSocket) {
@@ -13,7 +17,7 @@ module.exports = {
     }
 
     try {
-      let user = await User.findOne({id:request.session.userId});
+      let user = await User.findOne({ id: request.session.userId });
       let msg = await ChatMessage.create({
         message: request.body.message,
         createdBy: user.id
@@ -21,8 +25,8 @@ module.exports = {
       if (!msg.id) {
         throw new Error("Message processing failed!");
       }
-      msg.createdBy = user.id;
-      ChatMessage.publish(msg);
+      sails.sockets.broadcast("chat-channel", "channel", { msg });
+      return response.ok();
     } catch (err) {
       return response.serverError(err);
     }
@@ -30,7 +34,6 @@ module.exports = {
     return response.ok();
   },
   render: (request, response) => {
-    return response.view('pages/chatroom');
+    return response.view("pages/chatroom");
   }
 };
-

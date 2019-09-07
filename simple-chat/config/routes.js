@@ -23,6 +23,7 @@ module.exports.routes = {
   '/profile': { controller: 'UserController', action: 'render' },
   '/update/:id': { controller: 'UserController', action: 'update' },
   '/refresh-users': { controller: 'UserController', action: 'refresh' },
+  '/remove-user': { controller: 'UserController', action: 'remove' },
   '/on-connect': { controller: 'ChatMessageController', action: 'onConnect' },
   '/chat': { controller: 'ChatMessageController', action: 'render' },
   '/postMessage': { controller: 'ChatMessageController', action: 'postMessage' },

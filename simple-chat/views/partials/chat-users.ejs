@@ -6,7 +6,7 @@
 
 <!--  jsrender template -->
 <script id="usersTemplate" type="text/x-jsrender">
-  <div class="item">
+  <div class="item" id="{{:id}}">
     <img class="ui avatar image" src="{{:avatar}}">
     <div class="content">
       <div class="header">{{:name}}</div>
@@ -27,10 +27,14 @@
         renderChatUsers(users);
       });
     });
+
+    // Listen for users leaving
+    io.socket.on("logout", function(user) {
+      $(`#${user.user}`).remove()
+    })
   }
 
   function renderChatUsers(data) {
-    console.log('data: ', data);
     const template = $.templates("#usersTemplate");
     let htmlOutput = template.render(data);
     $("#users-content").html(htmlOutput);

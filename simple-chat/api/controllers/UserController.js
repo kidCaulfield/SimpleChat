@@ -23,7 +23,7 @@ module.exports = {
       let users = await User.find({
         where: { id: {'>': 0} } 
       });
-      
+
       sails.sockets.broadcast("chat-channel", "user", { users });
       res.json(users);
     } catch (error) {

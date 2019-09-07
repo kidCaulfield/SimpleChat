@@ -35,6 +35,8 @@ module.exports = {
 
   logout: async (request, response) => {
     // Logout user
+    const user = request.session.userId
+    sails.sockets.broadcast("chat-channel", "logout", { user });
     const leave = await AuthService.logout(request, response);
   }
 };

@@ -5,6 +5,8 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+var hdate = require('human-date');
+
 module.exports = {
   onConnect: async (req, res) => {
     sails.sockets.join(req, "chat-channel");
@@ -23,6 +25,13 @@ module.exports = {
         message: request.body.message,
         createdBy: user.id
       }).fetch();
+
+      user = await User.findOne({ id: msg.createdBy });
+      
+      let time = hdate.prettyPrint(new Date(), { showTime: true })
+      msg.createdBy = user
+      msg.createdAt = time
+      
       if (!msg.id) {
         throw new Error("Message processing failed!");
       }

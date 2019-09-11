@@ -21,7 +21,7 @@ module.exports = {
   find: async (req, res) => {
     try {
       let users = await User.find({
-        where: { id: {'>': 0} } 
+        where: { online: true } 
       });
 
       sails.sockets.broadcast("chat-channel", "user", { users });
@@ -33,7 +33,7 @@ module.exports = {
   refresh: async (req, res) => {
     try {
       let users = await User.find({
-        where: { id: {'>': 0} } 
+        where: { online: true } // not tested
       });
       
       res.json(users);

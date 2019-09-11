@@ -30,12 +30,14 @@ module.exports = {
     }
 
     // Log in user
+
     const success = await AuthService.login(request, response);
   },
 
   logout: async (request, response) => {
     // Logout user
     const user = request.session.userId
+    let updated = await User.update(user).set({ online: false}).fetch();
     sails.sockets.broadcast("chat-channel", "logout", { user });
     const leave = await AuthService.logout(request, response);
   }

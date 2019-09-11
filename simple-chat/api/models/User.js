@@ -33,6 +33,11 @@ module.exports = {
       type: "string",
       required: false,
       defaultsTo: ""
+    },
+
+    online: {
+      type: "boolean",
+      defaultsTo: false
     }
   }
 };

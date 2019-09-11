@@ -71,6 +71,10 @@ module.exports = {
   login: async (request, response) => {
     try {
       let user = await User.findOne({ email: request.body.email });
+      let updated = await User.update(user)
+        .set({
+          online: true
+        }).fetch();
       if (user) {
         // Login Passed
         request.session.userId = user.id;
